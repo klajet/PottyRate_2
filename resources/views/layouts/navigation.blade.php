@@ -15,8 +15,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Mine') }}
+                    <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
+                        {{ __('Explore') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('add')" :active="request()->routeIs('add')">
+                        {{ __('Add Rating') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('map')" :active="request()->routeIs('map')">
+                        {{ __('Map') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
+                        {{ __('About Us') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -73,6 +82,19 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
+                {{ __('Explore') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('add')" :active="request()->routeIs('add')">
+                {{ __('Add') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('map')" :active="request()->routeIs('map')">
+                {{ __('Map') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
+                {{ __('About Us') }}
+            </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->
