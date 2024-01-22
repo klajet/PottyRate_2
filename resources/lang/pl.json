@@ -1,0 +1,26 @@
+{
+    "Dashboard": "Panel",
+    "You're logged in!": "Zalogowano",
+    "Log Out": "Wyloguj",
+    "Profile": "Profil",
+    "Profile Information": "Ogólne",
+    "Update your account's profile information and email address.": "Zaktualizuj swój nick, informacje oraz email",
+    "Name": "Nazwa",
+    "Email": "Email",
+    "Save": "Zapisz",
+    "Update Password": "Zaktualizuj hasło",
+    "Ensure your account is using a long, random password to stay secure.": "Upewnij się, że używasz długiego, losowo wygenerowanego hasła!",
+    "Current Password": "Aktualne hasło",
+    "New Password": "Nowe hasło",
+    "Confirm Password": "Potwierdź hasło",
+    "Delete Account": "Usuń konto",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Po usunięciu Twojego konta wszystkie jego zasoby i dane zostaną trwale usunięte. Przed usunięciem konta pobierz wszelkie dane lub informacje, które chcesz zachować",
+    "Main Page": "Strona Główna",
+    "Log in": "Zaloguj",
+    "Register": "Zarejestruj się",
+    "Password": "Hasło",
+    "Remember me": "Zapamiętaj mnie",
+    "Forgot your password?": "Zapomniałeś hasła?",
+    "Already registered?": "Posiadasz już konto?"
+
+}
