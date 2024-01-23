@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\ChangeLocale;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('/set-locale/{locale}', function (string $locale) {
+//     if (! in_array($locale, ['en', 'pl'])) {
+//         abort(400);
+//     }
+ 
+//     App::setLocale($locale);
+ 
+//     // ...
+// })->middleware(ChangeLocale::class)->name('locale.setting');
+
+Route::get('set-locale/{locale}', function ($locale) {
+    // App::setLocale($locale);
+    Session()->put('locale', $locale);
+    return redirect()->back();
+})->middleware(ChangeLocale::class)->name('locale.setting');
+
+// Route::get('/lang/{locale}', function ($locale) {
+//     session(['lang' => $locale]);
+//     return redirect('/dashboard');
+
+// })->name('lang.switch');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -48,4 +72,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
 
