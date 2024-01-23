@@ -19,15 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Route for setting locales
 Route::get('set-locale/{locale}', function ($locale) {
-    // App::setLocale($locale);
     Session()->put('locale', $locale);
     return redirect()->back();
 })->middleware(ChangeLocale::class)->name('locale.setting');
 
-
-
+// Routes for pages
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
