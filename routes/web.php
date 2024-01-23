@@ -26,11 +26,7 @@ Route::get('set-locale/{locale}', function ($locale) {
     return redirect()->back();
 })->middleware(ChangeLocale::class)->name('locale.setting');
 
-// Route::get('/lang/{locale}', function ($locale) {
-//     session(['lang' => $locale]);
-//     return redirect('/dashboard');
 
-// })->name('lang.switch');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
