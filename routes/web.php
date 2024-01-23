@@ -20,16 +20,6 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/set-locale/{locale}', function (string $locale) {
-//     if (! in_array($locale, ['en', 'pl'])) {
-//         abort(400);
-//     }
- 
-//     App::setLocale($locale);
- 
-//     // ...
-// })->middleware(ChangeLocale::class)->name('locale.setting');
-
 Route::get('set-locale/{locale}', function ($locale) {
     // App::setLocale($locale);
     Session()->put('locale', $locale);
