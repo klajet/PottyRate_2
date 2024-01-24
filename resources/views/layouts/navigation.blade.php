@@ -32,11 +32,11 @@
                         {{ __('Admin Panel') }}
                     </x-nav-link>
                     @endif
-                    @if(Auth::check() && Auth::user()->roles->contains('name', 'moderator'))
+                    {{-- @if(Auth::check() && Auth::user()->roles->contains('name', 'moderator'))
                     <x-nav-link :href="route('moderator-panel')" :active="request()->routeIs('moderator-panel')">
                         {{ __('Moderator Panel') }}
                     </x-nav-link>
-                    @endif
+                    @endif --}}
 
                 </div>
             </div>

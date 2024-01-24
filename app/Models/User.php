@@ -84,5 +84,10 @@ class User extends Authenticatable
     public function getId()
     {
         return $this->id;
-    }   
+    }
+
+    public function isDeac()
+    {
+        return $this->roles()->where('name', 'blockedUser')->exists();
+    }
 }

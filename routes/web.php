@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminPanel;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ExploreController;
@@ -24,7 +25,7 @@ use App\Http\Middleware\ChangeLocale;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
     
 });
 
@@ -41,39 +42,46 @@ Route::get('set-locale/{locale}', function ($locale) {
 
 // Routes for pages
 Route::get('/dashboard', [dashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('dashboard');
+    ->middleware(['auth', 'verified', 'notDeactivated'])->name('dashboard');
 
+Route::delete('/dashboard/poDe/{id}', [dashboardController::class, 'destroyPost'])
+    ->middleware(['auth', 'verified', 'notDeactivated'])->name('dashboard-destroyPost'); 
 
 Route::get('/explore', [ExploreController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('explore');
+    ->middleware(['auth', 'verified', 'notDeactivated'])->name('explore');
 
 Route::get('/explore/{id}', [ExploreController::class, 'viewPost'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified', 'notDeactivated']);
 
 Route::get('/add', function () {
     return view('add');
-})->middleware(['auth', 'verified'])->name('add');
+})->middleware(['auth', 'verified', 'notDeactivated'])->name('add');
 
 // Route::post('/images/upload', [ImageController::class, 'store'])
 //     ->middleware(['auth', 'verified'])->name('uploadImage');
 
 Route::get('/aboutus', function () {
     return view('aboutus');
-})->middleware(['auth', 'verified'])->name('aboutus');
+})->middleware(['auth', 'verified', 'notDeactivated'])->name('aboutus');
 
 Route::get('/map', [mapController::class, 'getPins'])->name('map');
 // Route::get('/map', [mapController::class, 'getPins'])->middleware(['auth', 'verified'])->name('map');
 
-Route::get('/admin-panel', function () {
-    return view('admin-panel');
-})->middleware('role:admin')->name('admin-panel');
+Route::get('/admin-panel', [adminPanel::class, 'index'])
+    ->middleware('role:admin')->name('admin-panel');
 
-Route::get('/moderator-panel', function () {
-    return view('moderator-panel');
-})->middleware('role:moderator')->name('moderator-panel');
+Route::delete('/admin-panel/usDe/{id}', [adminPanel::class, 'deactivate'])
+    ->middleware('role:admin')->name('admin-panel-deactivateUser');  
+
+Route::delete('/admin-panel/poDe/{id}', [adminPanel::class, 'destroyPost'])
+    ->middleware('role:admin')->name('admin-panel-destroyPost');  
+
+// Route::get('/moderator-panel', function () {
+//     return view('moderator-panel');
+// })->middleware('role:moderator')->name('moderator-panel');
 
 Route::post('upload-rating', [UploadController::class, 'insert'])
-    ->middleware(['auth', 'verified'])->name('post');
+    ->middleware(['auth', 'verified', 'notDeactivated'])->name('post');
 //  /\  Jakby się upload zepsuł to tu wywalić middleware! /\ 
 
 // Route::get('/roles', function () {

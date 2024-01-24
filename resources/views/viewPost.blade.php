@@ -1,5 +1,5 @@
 @php
-    $item = $post[last(request()->segments())-1]
+    $item = $post->first();
 @endphp
 
 <script src="/js/map2.js"></script>

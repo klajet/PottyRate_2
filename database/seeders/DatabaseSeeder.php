@@ -19,10 +19,13 @@ class DatabaseSeeder extends Seeder
         $adminRole = Roles::firstOrCreate(['name' => 'admin']);
 
         // Sprawdź czy rola "pomocnik" istnieje, jeśli nie, dodaj ją
-        $moderatorRole = Roles::firstOrCreate(['name' => 'moderator']);
+        // $moderatorRole = Roles::firstOrCreate(['name' => 'moderator']);
 
         // Sprawdź czy rola "normalUser" istnieje, jeśli nie, dodaj ją
         $normalUserRole = Roles::firstOrCreate(['name' => 'normalUser']);
+
+        // Sprawdź czy rola "normalUser" istnieje, jeśli nie, dodaj ją
+        $blockedUserRole = Roles::firstOrCreate(['name' => 'blockedUser']);
 
         // Dodanie użytkownika admin
         User::create([
@@ -36,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'pomocnik',
             'email' => 'mod@example.com',
             'password' => bcrypt('12345678'),
-        ])->roles()->attach($moderatorRole);
+        ])->roles()->attach($blockedUserRole);
 
         // Dodanie użytkownika normalUser
         User::create([
