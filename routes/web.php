@@ -35,11 +35,6 @@ Route::get('set-locale/{locale}', function ($locale) {
     return redirect()->back();
 })->middleware(ChangeLocale::class)->name('locale.setting');
 
-// // Routes for pages
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 // Routes for pages
 Route::get('/dashboard', [dashboardController::class, 'index'])
     ->middleware(['auth', 'verified', 'notDeactivated'])->name('dashboard');
@@ -57,15 +52,11 @@ Route::get('/add', function () {
     return view('add');
 })->middleware(['auth', 'verified', 'notDeactivated'])->name('add');
 
-// Route::post('/images/upload', [ImageController::class, 'store'])
-//     ->middleware(['auth', 'verified'])->name('uploadImage');
-
 Route::get('/aboutus', function () {
     return view('aboutus');
 })->middleware(['auth', 'verified', 'notDeactivated'])->name('aboutus');
 
 Route::get('/map', [mapController::class, 'getPins'])->name('map');
-// Route::get('/map', [mapController::class, 'getPins'])->middleware(['auth', 'verified'])->name('map');
 
 Route::get('/admin-panel', [adminPanel::class, 'index'])
     ->middleware('role:admin')->name('admin-panel');
@@ -76,17 +67,10 @@ Route::delete('/admin-panel/usDe/{id}', [adminPanel::class, 'deactivate'])
 Route::delete('/admin-panel/poDe/{id}', [adminPanel::class, 'destroyPost'])
     ->middleware('role:admin')->name('admin-panel-destroyPost');  
 
-// Route::get('/moderator-panel', function () {
-//     return view('moderator-panel');
-// })->middleware('role:moderator')->name('moderator-panel');
 
 Route::post('upload-rating', [UploadController::class, 'insert'])
     ->middleware(['auth', 'verified', 'notDeactivated'])->name('post');
 //  /\  Jakby się upload zepsuł to tu wywalić middleware! /\ 
-
-// Route::get('/roles', function () {
-//     return redirect()->back()->with('roles', [rolesController::class, 'getRoles']);
-// });
 
 
 
