@@ -1,4 +1,4 @@
-var map, infobox;
+var map, infobox, bestView, arrLocations= [];
 
 function GetMap() 
 {
@@ -11,6 +11,8 @@ function GetMap()
 
     //Assign the infobox to a map instance.
     infobox.setMap(map);
+
+    console.log(pins)
 
     //Create random locations in the map bounds.
     // var randomLocations = Microsoft.Maps.TestDataGenerator.getLocations(5, map.getBounds());
@@ -31,8 +33,16 @@ function GetMap()
 
         //Add pushpin to the map.
         res = map.entities.push(pin);
+
+        var yourLocation= new Microsoft.Maps.Location( String(pins[i]['latitude']), String(pins[i]['longitude']));
+        arrLocations.push(yourLocation);
     }
+    bestView = Microsoft.Maps.LocationRect.fromLocations(arrLocations);
 }
+
+setTimeout((function () {
+    map.setView({ bounds: bestView });
+}).bind(this), 1000);
 
 function pushpinClicked(e) {
     //Make sure the infobox has metadata to display.
@@ -47,8 +57,3 @@ function pushpinClicked(e) {
     }
 }
 
-(async () => {
-    let script = document.createElement("script");
-    script.setAttribute("src", `https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AiiFw2qccbhYzvZ-tAPzPFi01K0uQO9YPhguFPF43zplQRv4F8CNg0HVB8eF3koQ`);
-    document.body.appendChild(script);
-})();

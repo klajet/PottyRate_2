@@ -47,6 +47,9 @@ Route::get('/dashboard', [dashboardController::class, 'index'])
 Route::get('/explore', [ExploreController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('explore');
 
+Route::get('/explore/{id}', [ExploreController::class, 'viewPost'])
+    ->middleware(['auth', 'verified']);
+
 Route::get('/add', function () {
     return view('add');
 })->middleware(['auth', 'verified'])->name('add');
