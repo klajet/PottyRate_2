@@ -27,7 +27,7 @@
                     <div id="city" class="flex w-1/5">
                         {{ $item->city }}
                     </div>
-                    <div id="user" class="w-1/5 justify-items-end">
+                    <div id="user" class="w-1/5 justify-items-end hidden md:block">
                         {{ $item->name }}
                     </div>
                 </div>  

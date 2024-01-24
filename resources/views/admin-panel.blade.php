@@ -14,25 +14,25 @@
             </div>
         </div>
 
-    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 mt-1 ml-0">
-        <div class="p-4 dark:text-gray-100 rounded-lg flex flex-col gap-4">
+    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 mt-1 ml-0 flex-nowrap">
+        <div class="p-4 dark:text-gray-100 rounded-lg flex flex-col gap-4 flex-nowrap">
             @foreach ($users as $item)
             {{-- ->select('users.name', 'users.email', 'roles.name as roleName', 'users.id') --}}
-                <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-4 px-4 flex gap-4">
+                <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-4 px-4 flex gap-4 flex-nowrap">
                     
-                    <div id="placeName " class="flex font-bold">
+                    <div id="placeName " class="flex font-bold min-w-fit">
                         {{ $item->id }}.
                     </div>    
-                    <div id="name" class="flex font-bold w-1/5">
+                    <div id="name" class="flex font-bold w-1/5 min-w-fit">
                         {{ $item->name }}
                     </div>    
-                    <div id="email " class="flex w-2/5 font-bold">
+                    <div id="email " class="flex w-2/5 font-bold min-w-fit hidden md:block">
                         {{ $item->email }}
                     </div> 
-                    <div id="roleName" class="flex w-1/5 justify-items-end">
+                    <div id="roleName" class="flex w-1/5 justify-items-end min-w-fit">
                         {{ $item->roleName }}
                     </div>
-                    <form action="{{ route('admin-panel-deactivateUser',$item->id) }}" method="Post" class="center">
+                    <form action="{{ route('admin-panel-deactivateUser',$item->id) }}" method="Post" class="center min-w-fit">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to deactivate this item?');">✖</button>
@@ -76,7 +76,7 @@
                     <div id="city" class="flex w-1/5">
                         {{ $item->city }}
                     </div>
-                    <div id="user" class="w-1/5 justify-items-end">
+                    <div id="user" class="w-1/5 justify-items-end hidden md:block">
                         {{ $item->name }}
                     </div>
                     <form action="{{ route('admin-panel-destroyPost',$item->placeId) }}" method="Post" class="center">

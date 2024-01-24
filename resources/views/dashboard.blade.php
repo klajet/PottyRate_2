@@ -45,7 +45,7 @@
                             {{-- // score | nazwa | opis | miejscowosc | adres... | user --}}
                                 <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-5 px-4 flex  gap-4">
                                     
-                                    <div id="score" class=" w-1/5 border-r-4">
+                                    <div id="score" class=" w-1/5 border-r-4 hidden md:block">
                                         @for ($i = 0; $i < $item->score; $i++)
                                             ⭐
                                         @endfor
@@ -56,13 +56,12 @@
                                     <div id="description" class="flex grow w-1/5">
                                         {{ $item->description }}
                                     </div>
+                                    <div id="Country" class="w-1/5 justify-items-end hidden md:block">
+                                        {{ $item->country }}
+                                    </div>
                                     <div id="city" class="flex w-1/5">
                                         {{ $item->city }}
-                                    </div>
-                                    <div id="user" class="w-1/5 justify-items-end">
-                                        {{ $item->name }}
-                                    </div>
-                                    
+                                    </div>                                    
                                     <form action="{{ route('dashboard-destroyPost',$item->placeId) }}" method="Post">
                                         @csrf
                                         @method('DELETE')

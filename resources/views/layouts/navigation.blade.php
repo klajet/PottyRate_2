@@ -105,6 +105,11 @@
             <x-responsive-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
                 {{ __('About Us') }}
             </x-responsive-nav-link>
+            @if(Auth::check() && Auth::user()->roles->contains('name', 'admin'))
+            <x-responsive-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')">
+                {{ __('Admin Panel') }}
+            </x-responsive-nav-link>
+            @endif
             
         </div>
 
