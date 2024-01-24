@@ -17,9 +17,7 @@
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 mt-1 ml-0 flex-nowrap">
         <div class="p-4 dark:text-gray-100 rounded-lg flex flex-col gap-4 flex-nowrap">
             @foreach ($users as $item)
-            {{-- ->select('users.name', 'users.email', 'roles.name as roleName', 'users.id') --}}
                 <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-4 px-4 flex gap-4 flex-nowrap">
-                    
                     <div id="placeName " class="flex font-bold min-w-fit">
                         {{ $item->id }}.
                     </div>    
@@ -35,7 +33,7 @@
                     <form action="{{ route('admin-panel-deactivateUser',$item->id) }}" method="Post" class="center min-w-fit">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to deactivate this item?');">✖</button>
+                        <button type="submit" class="bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to change block on this user?');">✖</button>
                     </form>
                 </div>  
             @endforeach
@@ -56,9 +54,7 @@
     <div class="mx-auto sm:px-6 lg:px-8 mt-1 ml-0">
         <div class="p-4 dark:text-gray-100 rounded-lg flex flex-col gap-4">
             @foreach ($posts as $item)
-            {{-- // score | nazwa | opis | miejscowosc | adres... | user --}}
                 <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-5 px-4 flex  gap-4">
-                    
                     <div id="placeName " class="flex font-bold">
                         {{ $item->placeId }}.
                     </div>    
@@ -82,7 +78,7 @@
                     <form action="{{ route('admin-panel-destroyPost',$item->placeId) }}" method="Post" class="center">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to deactivate this item?');">✖</button>
+                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to delete this post?');">✖</button>
                     </form>
                 </div>  
             @endforeach
