@@ -80,4 +80,9 @@ class User extends Authenticatable
 
         return $this->roles()->where('name', $roles)->exists();
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }   
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->string('title', 50);
             $table->string('path', 100);
             $table->foreignId('post_id')->references('id')->on('posts')->cascadeOnDelete();
             $table->timestamps();

@@ -1,4 +1,11 @@
 <x-app-layout>
+    <script src="js/map2.js"></script>
+
+    <script>    
+        var pins = {!! json_encode($pins->toArray(), JSON_HEX_TAG) !!};
+    </script>
+    
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Map') }}
@@ -23,4 +30,7 @@
             </div>
         </div>
     </div>
+
+    <div id="myMap" style="position:relative;width:75%;min-width:290px;height:600px;background-color:gray;margin:auto;padding:20px"></div>
+
 </x-app-layout>

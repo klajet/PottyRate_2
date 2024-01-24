@@ -19,8 +19,8 @@ return new class extends Migration
             $table->char('city', '100')->nullable(true);
             $table->char('street', '100')->nullable(true);
             $table->char('number', '10')->nullable(true);
-            $table->decimal('latitude');
-            $table->decimal('longtitude');
+            $table->double('latitude',20,15);
+            $table->double('longitude',20, 15);
 
             $table->timestamps();
         });

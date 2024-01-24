@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\mapController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\rolesController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\ChangeLocale;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +24,7 @@ use App\Http\Middleware\ChangeLocale;
 
 Route::get('/', function () {
     return view('welcome');
+    
 });
 
 // Route for setting locales
@@ -46,13 +51,15 @@ Route::get('/add', function () {
     return view('add');
 })->middleware(['auth', 'verified'])->name('add');
 
+// Route::post('/images/upload', [ImageController::class, 'store'])
+//     ->middleware(['auth', 'verified'])->name('uploadImage');
+
 Route::get('/aboutus', function () {
     return view('aboutus');
 })->middleware(['auth', 'verified'])->name('aboutus');
 
-Route::get('/map', function () {
-    return view('map');
-})->middleware(['auth', 'verified'])->name('map');
+Route::get('/map', [mapController::class, 'getPins'])->name('map');
+// Route::get('/map', [mapController::class, 'getPins'])->middleware(['auth', 'verified'])->name('map');
 
 Route::get('/admin-panel', function () {
     return view('admin-panel');
@@ -62,9 +69,12 @@ Route::get('/moderator-panel', function () {
     return view('moderator-panel');
 })->middleware('role:moderator')->name('moderator-panel');
 
+Route::post('upload-rating', [UploadController::class, 'insert'])->name('post');
+
 // Route::get('/roles', function () {
 //     return redirect()->back()->with('roles', [rolesController::class, 'getRoles']);
 // });
+
 
 
 Route::middleware('auth')->group(function () {
