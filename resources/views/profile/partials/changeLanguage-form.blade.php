@@ -10,12 +10,15 @@
     </header>
 
     <div class="space-y-6 container">
-        <x-secondary-button x-on:click="alert('Hello World!')">
-            {{ __('Polish') }}
-        </x-secondary-button>
-        <x-secondary-button x-on:click="{{ route('locale.setting', 'en') }}">
-            {{ __('English') }}
-        </x-secondary-button>
+        <a href="{{ route('locale.setting', 'pl') }}">
+            <x-secondary-button>
+                {{ __('Polish') }}
+            </x-secondary-button>
+        </a>
+        <a href="{{ route('locale.setting', 'en') }}">
+            <x-secondary-button>
+                {{ __('English') }}
+            </x-secondary-button>
+        </a>
     </div>
-
 </section>

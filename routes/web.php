@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\rolesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\ChangeLocale;
 
@@ -25,10 +28,15 @@ Route::get('set-locale/{locale}', function ($locale) {
     return redirect()->back();
 })->middleware(ChangeLocale::class)->name('locale.setting');
 
+// // Routes for pages
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 // Routes for pages
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::get('/explore', function () {
     return view('explore');
@@ -46,7 +54,17 @@ Route::get('/map', function () {
     return view('map');
 })->middleware(['auth', 'verified'])->name('map');
 
+Route::get('/admin-panel', function () {
+    return view('admin-panel');
+})->middleware('role:admin')->name('admin-panel');
 
+Route::get('/moderator-panel', function () {
+    return view('moderator-panel');
+})->middleware('role:moderator')->name('moderator-panel');
+
+// Route::get('/roles', function () {
+//     return redirect()->back()->with('roles', [rolesController::class, 'getRoles']);
+// });
 
 
 Route::middleware('auth')->group(function () {

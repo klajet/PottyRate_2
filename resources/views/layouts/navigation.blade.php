@@ -27,6 +27,17 @@
                     <x-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
                         {{ __('About Us') }}
                     </x-nav-link>
+                    @if(Auth::check() && Auth::user()->roles->contains('name', 'admin'))
+                    <x-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')">
+                        {{ __('Admin Panel') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::check() && Auth::user()->roles->contains('name', 'moderator'))
+                    <x-nav-link :href="route('moderator-panel')" :active="request()->routeIs('moderator-panel')">
+                        {{ __('Moderator Panel') }}
+                    </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
