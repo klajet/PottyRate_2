@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\mapController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\rolesController;
@@ -43,9 +44,8 @@ Route::get('/dashboard', [dashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/explore', function () {
-    return view('explore');
-})->middleware(['auth', 'verified'])->name('explore');
+Route::get('/explore', [ExploreController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('explore');
 
 Route::get('/add', function () {
     return view('add');
@@ -69,7 +69,9 @@ Route::get('/moderator-panel', function () {
     return view('moderator-panel');
 })->middleware('role:moderator')->name('moderator-panel');
 
-Route::post('upload-rating', [UploadController::class, 'insert'])->name('post');
+Route::post('upload-rating', [UploadController::class, 'insert'])
+    ->middleware(['auth', 'verified'])->name('post');
+//  /\  Jakby się upload zepsuł to tu wywalić middleware! /\ 
 
 // Route::get('/roles', function () {
 //     return redirect()->back()->with('roles', [rolesController::class, 'getRoles']);
