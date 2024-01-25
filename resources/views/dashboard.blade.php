@@ -63,9 +63,9 @@
                                     <form action="{{ route('dashboard-destroyPost',$item->placeId) }}" method="Post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to delete this item?');">✖</button>
+                                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to delete this item?');" aria-label='{{__("Delete post button")}}'>✖</button>
                                     </form>
-                                    <a href="/explore/{{ $item->placeId }}"><button class="flex bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">👁‍🗨</button></a>
+                                    <a href="/explore/{{ $item->placeId }}"><button class="flex bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 border border-gray-400 rounded shadow" aria-label='{{__("View post button")}}'>👁</button></a>
                                 </div>  
                             @endforeach
                             {{ $posts->links() }}

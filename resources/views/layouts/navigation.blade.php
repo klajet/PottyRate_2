@@ -12,23 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" aria-label='{{__("Go to users dashboard")}}'>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
+                    <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" aria-label='{{__("Go to explore page")}}'>
                         {{ __('Explore') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('add')" :active="request()->routeIs('add')">
+                    <x-nav-link :href="route('add')" :active="request()->routeIs('add')" aria-label='{{__("Go to add rating page")}}'>
                         {{ __('Add Rating') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('map')" :active="request()->routeIs('map')">
+                    <x-nav-link :href="route('map')" :active="request()->routeIs('map')" aria-label='{{__("Go to map page")}}'>
                         {{ __('Map') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
+                    <x-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')" aria-label='{{__("Go to about us page")}}'>
                         {{ __('About Us') }}
                     </x-nav-link>
                     @if(Auth::check() && Auth::user()->roles->contains('name', 'admin'))
-                    <x-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')">
+                    <x-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')" aria-label='{{__("Go to admin panel")}}'>
                         {{ __('Admin Panel') }}
                     </x-nav-link>
                     @endif
@@ -57,7 +57,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" aria-label='{{__("Profile settings")}}'>
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -67,7 +67,7 @@
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();" aria-label='{{__("Log out")}}'>
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -90,23 +90,23 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" aria-label='{{__("Go to users dashboard")}}'>
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
+            <x-responsive-nav-link :href="route('explore')" :active="request()->routeIs('explore')" aria-label='{{__("Go to explore page")}}'>
                 {{ __('Explore') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('add')" :active="request()->routeIs('add')">
+            <x-responsive-nav-link :href="route('add')" :active="request()->routeIs('add')" aria-label='{{__("Go to add rating page")}}'>
                 {{ __('Add') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('map')" :active="request()->routeIs('map')">
+            <x-responsive-nav-link :href="route('map')" :active="request()->routeIs('map')" aria-label='{{__("Go to map page")}}'>
                 {{ __('Map') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')">
+            <x-responsive-nav-link :href="route('aboutus')" :active="request()->routeIs('aboutus')" aria-label='{{__("Go to about us page")}}'>
                 {{ __('About Us') }}
             </x-responsive-nav-link>
             @if(Auth::check() && Auth::user()->roles->contains('name', 'admin'))
-            <x-responsive-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')">
+            <x-responsive-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')" aria-label='{{__("Go to admin panel")}}'>
                 {{ __('Admin Panel') }}
             </x-responsive-nav-link>
             @endif
@@ -121,7 +121,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('profile.edit')" aria-label='{{__("Profile settings")}}'>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
@@ -131,7 +131,7 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                        this.closest('form').submit();" aria-label='{{__("Log out")}}'>
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>

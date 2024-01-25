@@ -33,7 +33,7 @@
                     <form action="{{ route('admin-panel-deactivateUser',$item->id) }}" method="Post" class="center min-w-fit">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to change block on this user?');">✖</button>
+                        <button type="submit" class="bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to change block on this user?');" aria-label='{{__("Change users block state button")}}'>✖</button>
                     </form>
                 </div>  
             @endforeach
@@ -78,7 +78,7 @@
                     <form action="{{ route('admin-panel-destroyPost',$item->placeId) }}" method="Post" class="center">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to delete this post?');">✖</button>
+                        <button type="submit" class="flex bg-red-800 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onclick="return confirm('Are you sure you want to delete this post?');" aria-label='{{__("Delete post button")}}'>✖</button>
                     </form>
                 </div>  
             @endforeach

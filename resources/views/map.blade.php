@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div id="myMap" style="position:relative;width:75%;min-width:290px;height:600px;background-color:gray;margin:auto;padding:20px"></div>
+    <div id="myMap" style="position:relative;width:75%;min-width:290px;height:600px;background-color:gray;margin:auto;padding:20px" aria-label='{{__("Map")}}'></div>
 
 </x-app-layout>
 
