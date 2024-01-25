@@ -109,8 +109,7 @@
             <x-responsive-nav-link :href="route('admin-panel')" :active="request()->routeIs('admin-panel')" aria-label='{{__("Go to admin panel")}}'>
                 {{ __('Admin Panel') }}
             </x-responsive-nav-link>
-            @endif
-            
+            @endif            
         </div>
 
         <!-- Responsive Settings Options -->
@@ -139,3 +138,4 @@
         </div>
     </div>
 </nav>
+

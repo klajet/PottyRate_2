@@ -23,6 +23,7 @@ class notDeactivated
         $user = Auth::user();
 
         if($user->isDeac())
+            
             abort(403);
 
 

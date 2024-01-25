@@ -19,6 +19,16 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            function changeFontSize(direction) {
+              const root = document.documentElement;
+              const currentSize = parseFloat(getComputedStyle(root).fontSize);
+              const newSize =
+                direction === "increase" ? currentSize * 1.1 : currentSize / 1.1;
+              root.style.fontSize = newSize + "px";
+            }
+        </script>
+        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -38,5 +48,11 @@
                 {{ $slot }}
             </main>
         </div>
+         
+        <div class="fixed bottom-0 left-0 w-screen h-6"> 
+            <x-secondary-button onclick="changeFontSize('decrease')" class="bg-zinc-700">-</x-primary-button>
+                <x-secondary-button onclick="changeFontSize('increase')" class="bg-zinc-700">+</x-primary-button>
+        </div>
+
     </body>
 </html>
