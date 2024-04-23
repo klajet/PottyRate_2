@@ -1,4 +1,5 @@
-Projekt na zaliczenie przedmiotu "Aplikacje Internetowe"
+## Projekt na zaliczenie przedmiotu "Aplikacje Internetowe"
+
 Strona umożliwiająca dodawanie opinii wraz z lokalizacją na mapie.
 
 ![obraz](https://github.com/klajet/PottyRate_2/assets/126820289/b4775308-9d98-4c13-b51d-35f435d3c601)
